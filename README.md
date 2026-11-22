@@ -119,3 +119,6 @@ tests/studio          -> ServerStorage.UnitTest      (left out of release.projec
 ## Credits
 - Roblox skills: [TabooHarmony/roblox-brain](https://github.com/TabooHarmony/roblox-brain), MIT licence (`.claude/skills/ROBLOX_BRAIN_LICENSE`).
 - Toolchain: [Rojo](https://rojo.space/), [Rokit](https://github.com/rojo-rbx/rokit), [Selene](https://github.com/Kampfkarren/selene), [StyLua](https://github.com/JohnnyMorganz/StyLua), [luau-lsp](https://github.com/JohnnyMorganz/luau-lsp), [Lune](https://github.com/lune-org/lune).
+
+## License
+MIT, see [LICENSE](LICENSE). The bundled roblox-brain skills keep their own MIT licence (`.claude/skills/ROBLOX_BRAIN_LICENSE`).
