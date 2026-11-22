@@ -116,6 +116,9 @@ assets/art/rbxm       -> ReplicatedStorage.ArtAssets
 tests/studio          -> ServerStorage.UnitTest      (left out of release.project.json)
 ```
 
+## Support
+If this template saves you time, you can support its development through [GitHub Sponsors](https://github.com/sponsors/Valentindghjg). Stars, issues and pull requests help too.
+
 ## Credits
 - Roblox skills: [TabooHarmony/roblox-brain](https://github.com/TabooHarmony/roblox-brain), MIT licence (`.claude/skills/ROBLOX_BRAIN_LICENSE`).
 - Toolchain: [Rojo](https://rojo.space/), [Rokit](https://github.com/rojo-rbx/rokit), [Selene](https://github.com/Kampfkarren/selene), [StyLua](https://github.com/JohnnyMorganz/StyLua), [luau-lsp](https://github.com/JohnnyMorganz/luau-lsp), [Lune](https://github.com/lune-org/lune).
