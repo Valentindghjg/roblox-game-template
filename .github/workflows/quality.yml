@@ -25,10 +25,10 @@ jobs:
         run: selene src tests tools
       - name: Generate source map
         run: rojo sourcemap default.project.json --output sourcemap.json
-      - name: Type-check Luau
+      - name: Type-check pure Luau modules (no Roblox definitions in CI; add modules without Instance types here)
         run: >-
           luau-lsp analyze --sourcemap sourcemap.json
-          src/shared/ArtLibrary.lua src/shared/ArtPalette.lua src/server/Services/ExampleService.lua
+          src/shared/ArtPalette.lua src/server/Services/ExampleService.lua
       - name: Run core unit tests
         run: lune run tests/headless/run.luau
       - name: Validate Rojo project
