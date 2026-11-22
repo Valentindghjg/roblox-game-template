@@ -1,0 +1,25 @@
+# Rojo / Studio build outputs (regenerate with `rojo build` / `rojo sourcemap`)
+build.rbxlx
+release.rbxlx
+sourcemap.json
+rojo-serve*.log
+*.rbxl.lock
+*.rbxlx.lock
+
+# Owner's model-quality reference images (web images, unknown licence): local only.
+docs/art/quality-reference/*.png
+docs/art/quality-reference/*.jpg
+docs/art/quality-reference/*.webp
+
+# Art pipeline: generated builds, probe output, Blender backups, Python caches.
+# The .blend files and build scripts under assets/art/source are committed.
+assets/art/_build/
+tests/fixtures/art/_build/
+tests/fixtures/art/rbxm/
+tests/fixtures/art/source/**/*.blend
+*.blend1
+__pycache__/
+
+# Secrets
+.env
+*.key

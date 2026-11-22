@@ -1,0 +1,13 @@
+{
+	"schemaVersion": 1,
+	"artPath": "Props/ArtPipelineProbe",
+	"displayName": "Art pipeline probe",
+	"tier": "B",
+	"version": 1,
+	"requiredAttachments": ["Front"],
+	"upload": {
+		"modelAssetId": null,
+		"sourceSha256": null,
+		"uploadedAt": null
+	}
+}

@@ -1,0 +1,10 @@
+# Keep third-party model sources byte-identical to their original downloads.
+*.fbx binary
+*.glb binary
+*.obj -text -diff
+*.mtl -text -diff
+*.blend binary
+*.rbxm binary
+*.rbxl binary
+*.png binary
+*.jpg binary

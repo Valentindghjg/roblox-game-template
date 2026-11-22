@@ -1,0 +1,41 @@
+name: Quality
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install pinned Roblox tools
+        uses: paradoxum-games/setup-rokit@v3
+        with:
+          version: 1.2.0
+          cache: true
+      - name: Check Luau formatting
+        run: stylua --check src tests tools
+      - name: Lint Luau
+        run: selene src tests tools
+      - name: Generate source map
+        run: rojo sourcemap default.project.json --output sourcemap.json
+      - name: Type-check Luau
+        run: >-
+          luau-lsp analyze --sourcemap sourcemap.json
+          src/shared/ArtLibrary.lua src/shared/ArtPalette.lua src/server/Services/ExampleService.lua
+      - name: Run core unit tests
+        run: lune run tests/headless/run.luau
+      - name: Validate Rojo project
+        run: rojo build default.project.json --output build.rbxlx
+      - name: Validate release project
+        run: rojo build release.project.json --output release.rbxlx
+      - name: Test art pipeline
+        run: lune run tests/tools/art_pipeline.luau
+      - name: Verify integrated art
+        run: lune run tools/art/art.luau verify release.rbxlx
