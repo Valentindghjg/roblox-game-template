@@ -1,6 +1,6 @@
 # <ID> — <title>
 
-Written by: `planner` (Opus 5.5, high). Implemented by: the agent for the tier below. Playtested by: `playtester` (Haiku 5.5). Reviewed and committed by: `reviewer` (Sonnet 5.5, high). Pipeline: skill `game-task`.
+Written by: `planner` (Opus 5.5, medium) for tier M and MODEL, `planner-high` (Opus 5.5, high) for tier L; tier S usually runs without a plan. Implemented by: the agent for the tier below. Playtested by: `playtester` (Haiku 5.5). Reviewed and committed by: `reviewer` (Sonnet 5.5, high). Pipeline: skill `game-task`.
 Rule: everything below is decided. If something is missing, the implementer stops and reports; it never chooses.
 
 ## Goal

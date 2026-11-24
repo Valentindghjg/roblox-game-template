@@ -19,6 +19,6 @@ This turn should now run on Opus 5.5 at high effort. Planning topic: $ARGUMENTS
 3. Write the result where it belongs:
    - Owner decisions go to `docs/PRODUCT_SPEC.md` and get a dated entry in `docs/DECISION_LOG.md`.
    - New or changed tasks go to `docs/CLAUDE_BACKLOG.md`, with the goal, dependencies and verifiable acceptance criteria.
-   - A complete task plan `docs/plans/<ID>.md` is written by the `planner` agent. Start it with `subagent_type: planner` only, and do not pass `model` or `effort`.
+   - A complete task plan `docs/plans/<ID>.md` is written by the `planner` agent, or by `planner-high` for tier L. Start it with `subagent_type` only, and do not pass `model` or `effort`.
 4. Commit documentation changes in small logical commits.
 5. As soon as the user wants the planned work carried out, invoke the skill `game-task`. It switches the chat back to Sonnet and starts the right agent for each step.

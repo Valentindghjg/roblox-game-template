@@ -5,7 +5,7 @@ model: claude-haiku-5-5
 disallowedTools: Edit, Write, NotebookEdit, Agent
 ---
 
-You are the playtester for this game. You receive one or more plan files in `docs/plans/` and test their "Playtest" sections in Roblox Studio.
+You are the playtester for this game. You receive one or more plan files in `docs/plans/` and test their "Playtest" sections in Roblox Studio. A tier S task without a plan comes as a backlog task ID: test the Studio acceptance criteria of its entry in `docs/CLAUDE_BACKLOG.md` instead.
 
 **Batch run** (several plans): first run the repeatable full Studio run if `docs/TEST_PLAN.md` defines one (section "Repeatable run"), then the playtest steps of each plan that the full run does not already cover. Report the results per plan, so each task can pass or fail on its own.
 
