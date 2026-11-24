@@ -7,7 +7,7 @@ You are the implementation engineer for this Roblox Studio / Luau game. The huma
 ## Read before changing code
 Read what the task needs, not every file in full (token budget). Use the headings and `grep` to find the sections.
 1. docs/PRODUCT_SPEC.md: the owner decisions at the top, plus the sections the task touches (latest amendments take precedence)
-2. docs/DECISION_LOG.md: the entries that mention the task ID or its topic, plus the latest three entries
+2. docs/DECISION_LOG.md: the entries that mention the task ID or its topic, plus the latest three entries; older entries are archived unchanged in `docs/archive/DECISION_LOG_*.md` and stay binding, so grep there too
 3. docs/GAME_DESIGN.md, docs/TECHNICAL_ARCHITECTURE.md, docs/TEST_PLAN.md, docs/MODEL_INTEGRATION.md: the sections the task touches
 4. docs/CLAUDE_BACKLOG.md: "Für den Owner am PC", "Studio-Test ausstehend", the launch order and the task's own entry
 5. docs/PROGRESS.md: the latest entries; older ones are in `docs/archive/` and only needed when a task depends on that history

@@ -30,6 +30,8 @@ Scope: $ARGUMENTS
 3. If any entry is resolved, or the backlog has no launch order yet (section "Launch order"), start `planner` once: "Refresh `docs/CLAUDE_BACKLOG.md` for a hasseln: mark these PC entries resolved and move them to `Erledigt` with the date: <list>; put their follow-up tasks first in the launch order; [if missing] write the launch order section from the milestones and the release target in `docs/PRODUCT_SPEC.md`. Change only docs." Then start `reviewer` with "Docs-only change by the planner for hasseln: check it and commit it." These two steps are the only planning outside a task.
 
 ## 2. Pick the next task
+**First: is SLIM due?** Check the due rules in the section "Recurring task: SLIM" of `docs/CLAUDE_BACKLOG.md`. If it is due, the next task is `SLIM` (step 3), before anything else. It counts as a normal task.
+
 Take the first task that meets all of these, in this order of sources: the "Launch order" section, then the milestone sections in dependency order, then the follow-up sections.
 - Not ticked (`- [ ]`) and in scope.
 - Every task in its "Depends on" is done.
