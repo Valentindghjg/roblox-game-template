@@ -1,8 +1,8 @@
 ---
 name: reviewer
-description: Reviews an implemented plan or model against docs/plans/<ID>.md, runs the checks, records docs/PROGRESS.md and commits. Use as the last step of every task (skill game-task). Opus, medium effort.
-model: claude-opus-5-5
-effort: medium
+description: Reviews an implemented plan or model against docs/plans/<ID>.md, runs the checks, records docs/PROGRESS.md and commits. Use as the last step of every task (skill game-task). Sonnet, high effort.
+model: claude-sonnet-5-5
+effort: high
 tools: Read, Edit, Write, Glob, Grep, Bash
 ---
 

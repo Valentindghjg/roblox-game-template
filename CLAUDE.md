@@ -53,7 +53,7 @@ Every task that changes code, tests, models or the map runs through the skill **
 | Implement, tier L (saves, money, inventory, security, concurrency) | `implementer-opus` | Opus 5.5, high |
 | 3D models and map (tier MODEL), Blender kit, self-review against `docs/art/quality-reference/` | `modeler` | Opus 5.5, medium |
 | Playtest in Studio through the Roblox Studio MCP | `playtester` | Sonnet 5.5, medium |
-| Review the diff against the plan, run the checks, record PROGRESS.md, commit and push | `reviewer` | Opus 5.5, medium |
+| Review the diff against the plan, run the checks, record PROGRESS.md, commit and push | `reviewer` | Sonnet 5.5, high |
 
 - The main session only orchestrates. It does not write plans, code, models or commits itself.
 - Start the agents with `subagent_type` only. Never pass `model` or `effort` to the Agent tool, because that overrides the agent file.
