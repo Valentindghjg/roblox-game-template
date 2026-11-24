@@ -1,6 +1,6 @@
 ---
 name: game-task
-description: Runs one game task (code, bug fix or 3D model) through the fixed model pipeline - planner (Opus 5.5 high), implementer tier (Sonnet 5.5 medium, Sonnet 5.5 high or Opus 5.5 high) or modeler (Opus 5.5 medium), playtester (Sonnet 5.5 medium), reviewer (Sonnet 5.5 high, commits). Use for every task that changes code, tests, models or the map in this repository, including each ticket of the continuous-execution loop.
+description: Runs one game task (code, bug fix or 3D model) through the fixed model pipeline - planner (Opus 5.5 high), implementer tier (Sonnet 5.5 medium, Sonnet 5.5 high or Opus 5.5 high) or modeler (Opus 5.5 medium), playtester (Haiku 5.5), reviewer (Sonnet 5.5 high, commits). Use for every task that changes code, tests, models or the map in this repository, including each ticket of the continuous-execution loop.
 model: claude-sonnet-5-5
 effort: high
 argument-hint: <backlog task ID or short task description>
@@ -23,7 +23,7 @@ Every step runs in its own agent. The agent file fixes the model and effort, so 
 | Implement, tier M | `implementer-high` | Sonnet 5.5, high |
 | Implement, tier L | `implementer-opus` | Opus 5.5, high |
 | 3D model or map, tier MODEL | `modeler` | Opus 5.5, medium |
-| Playtest | `playtester` | Sonnet 5.5, medium |
+| Playtest | `playtester` | Haiku 5.5 |
 | Review and commit | `reviewer` | Sonnet 5.5, high |
 
 ## Rules for the main session
