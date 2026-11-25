@@ -18,4 +18,5 @@ Startgerüst für neue Roblox-Spiele, die Claude Code entwickelt: Regeln, Agents
 - **Was nur du entscheidest:** Veröffentlichen und Robux-Produkte macht nur der Owner.
 - **3D-Modelle:** Der modeler baut sie in Blender mit dem Kit `tools/art/kit/lowpoly_kit.py` und vergleicht seine Renderbilder mit deinen Referenzen in `docs/art/quality-reference/`. Hochladen ins Spiel geht erst mit einem Open-Cloud-API-Key (README, „Art pipeline setup“).
 - **Token sparen:** Die Agents lesen nur die nötigen Abschnitte, Pläne haben eine Größengrenze, und das Fortschrittsprotokoll archiviert sich selbst.
+- **UI-Pack (optional):** Das Essential UI Pack von Swarve Studios kann der Look deiner UI werden, muss aber nicht. Lizenz und Inhalt (alle Bild- und Sound-IDs) liegen in `assets/third_party/swarve-essential-ui/`. Die `.rbxl` legst du selbst dort ab; sie wird nicht committet. Details im englischen README, Abschnitt „Optional: Swarve UI pack“.
 - **Tests:** `lune run tests/headless/run.luau`. Neue Module und Testfälle werden automatisch gefunden.

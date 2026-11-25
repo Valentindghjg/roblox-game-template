@@ -107,6 +107,13 @@ New modules in `src/shared` and `src/server/Services` and new test cases in `tes
 - **Rules:** add game-specific rules (monetization, events, languages) to the conflict list in `CLAUDE.md`.
 - **Models per role:** change `model` and `effort` in `.claude/agents/*.md`.
 
+## Optional: Swarve UI pack
+The template can use the **Essential UI Pack by Swarve Studios** as the look of a game's UI: HUD button rail, title-bar windows, shop cards, notifications, icons, heavy fonts, 3 px strokes, hover and click sounds and a button tween (hover 110 %, press 90 %). It is off by default; a game that does not want it simply ignores it.
+- **What is here:** `assets/third_party/swarve-essential-ui/LICENSE.md` (permission record) and `INVENTORY.md` (structure, style values, every image and sound ID). The `.rbxl` is not committed; it is gitignored in that folder.
+- **Licence:** not covered by the MIT licence. The permission was given to the template's owner for the owner's own games (any use and modification, no reselling of the assets). Anyone else needs the pack and permission from Swarve Studios.
+- **Use it:** copy your `.rbxl` into that folder and tell the planner in a UI task to build on the pack, using `INVENTORY.md`. Only the look is used: never the pack's scripts, remotes or `ProcessReceipt` handlers.
+- **Coming:** a ready `UiKit` add-on (theme values, builders, button interaction) that is switched on with one step.
+
 ## Folder layout
 ```
 src/shared            -> ReplicatedStorage.Shared   (pure modules, config, protocol)
@@ -121,6 +128,7 @@ If this template saves you time, you can support its development through [GitHub
 
 ## Credits
 - Roblox skills: [TabooHarmony/roblox-brain](https://github.com/TabooHarmony/roblox-brain), MIT licence (`.claude/skills/ROBLOX_BRAIN_LICENSE`).
+- Optional UI pack: Essential UI Pack by Swarve Studios, used with permission (`assets/third_party/swarve-essential-ui/LICENSE.md`); not part of the MIT licence.
 - Toolchain: [Rojo](https://rojo.space/), [Rokit](https://github.com/rojo-rbx/rokit), [Selene](https://github.com/Kampfkarren/selene), [StyLua](https://github.com/JohnnyMorganz/StyLua), [luau-lsp](https://github.com/JohnnyMorganz/luau-lsp), [Lune](https://github.com/lune-org/lune).
 
 ## License

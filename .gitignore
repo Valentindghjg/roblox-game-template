@@ -23,3 +23,7 @@ __pycache__/
 # Secrets
 .env
 *.key
+
+# Swarve Essential UI Pack: licensed to the owner for use, not for redistribution
+assets/third_party/swarve-essential-ui/*.rbxl
+assets/third_party/swarve-essential-ui/*.rbxlx
