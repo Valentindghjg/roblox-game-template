@@ -21,8 +21,8 @@ Tier: S | M | L | MODEL (keep exactly one). Reason: one line.
 
 If several tiers fit, the highest wins (L > M > S). A model task that also needs code changes becomes two plans.
 
-## Skills to load
-For example: roblox-data, roblox-networking, roblox-security, roblox-gui.
+## Skill checks
+The planner loads the skills and lists here only the checks that apply to this task (at most 10 lines). Implementer, reviewer and playtester read these lines instead of the skills.
 
 ## Files
 | File | New/Change | Purpose |
@@ -40,6 +40,7 @@ Exact config keys with values and evidence tags (OBSERVED/PROVISIONAL), schema f
 |---|---|---|
 
 ## Playtest (Studio, via playtester)
+Only the steps this task adds or changes, with their runner step IDs; the playtester runs them with the smoke run. Nothing that headless tests already prove.
 1. Setup.
 2. Action → expected result (values to read back, objects that must exist).
 

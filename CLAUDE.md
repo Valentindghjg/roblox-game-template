@@ -60,7 +60,7 @@ Every task that changes code, tests, models or the map runs through the skill **
 - The main session only orchestrates. It does not write plans, code, models or commits itself.
 - Start the agents with `subagent_type` only. Never pass `model` or `effort` to the Agent tool, because that overrides the agent file.
 - Implementers decide only minor details themselves (names of locals and private helpers, formatting, lint fixes; rule 3 in `.claude/agents/implementer.md`) and stop with a report on any other ambiguity; the planner amends the plan.
-- Studio playtests are batched: now for tier L or MODEL, saves, money, inventory, purchases, world geometry or a milestone's last task, otherwise every third task through the queue "Studio-Test ausstehend" in `docs/CLAUDE_BACKLOG.md` (skill `game-task`, step 3). Headless checks run for every task.
+- Studio playtests are batched (owner decision 2026-11-26, speed and usage): now for saves, money, inventory, purchases, world wiring or a milestone's last task, else every fifth task via the queue "Studio-Test ausstehend" in `docs/CLAUDE_BACKLOG.md` (`game-task` step 3). A playtest is the smoke run plus the task's own steps; the full run only at the end of a hasseln run, for QA and release tasks and for runner or core-loop changes. Headless checks run for every task; agents print only failures and the summary.
 - Plans have a size budget (S 12 KB, M 20 KB, L 30 KB, MODEL 12 KB); the reviewer archives PROGRESS.md above 20 KB.
 - **Model switch in the chat:** classify each message.
   - Planning (design, decisions, spec, backlog, priorities, balancing, "how should this work"): invoke `game-plan` (Opus 5.5, high).
@@ -82,7 +82,7 @@ Project skills under `.claude/skills/`:
   - Tools: roblox-cloud, roblox-publish-checklist, roblox-studio-mcp, roblox-tooling
 
 ### Using the skills (mandatory)
-- Before every Roblox task, load `roblox-collaboration-mode` first (with the precedence rules below), then each domain skill the change touches (`SKILL.md`; `references/full.md` only when needed).
+- The planner loads `roblox-collaboration-mode` first (with the precedence rules below), then each domain skill the change touches (`SKILL.md`; `references/full.md` only when needed), and copies the applicable checks into the plan's "Skill checks"; the other agents read those lines instead of the skills (the implementer of a tier S task without a plan reads the `SKILL.md` files itself). `CLAUDE.md` is in every agent's context already; agents do not read it again.
 
   | Task | Skills |
   |---|---|

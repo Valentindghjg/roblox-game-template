@@ -61,7 +61,7 @@ A blocker is anything the run cannot fix itself after one obvious attempt: a mis
 
 ## 7. End the run
 The run ends only when: everything in scope is done and verified; the owner says stop; three blockers in a row; or every remaining in-scope task is blocked or waits for the owner.
-0. **Run the Studio queue.** If "Studio-Test ausstehend" in `docs/CLAUDE_BACKLOG.md` lists tasks and Studio is available, start `playtester` with all their plan paths (a batch run, skill `game-task` step 3), handle failures as that step says, and have the `reviewer` record and commit the result. Nothing deferred may stay untested when Studio could run it.
+0. **Run the Studio queue.** If "Studio-Test ausstehend" in `docs/CLAUDE_BACKLOG.md` lists tasks and Studio is available, start `playtester` with all their plan paths (a batch run, skill `game-task` step 3), as the run's one full run (`mode = "full"`, owner decision 2026-11-26), handle failures as that step says, and have the `reviewer` record and commit the result. Nothing deferred may stay untested when Studio could run it.
 1. **Refresh the backlog** unless everything is done. Start `planner`: "Refresh the whole `docs/CLAUDE_BACKLOG.md` after a hasseln, assuming the owner will resolve every open 'Für den Owner am PC' entry before the next run: tick what is done, update status lines, fix dependencies, put the follow-up tasks of the PC entries first in the launch order, and make every PC entry complete in the section's format. Change only docs." Then `reviewer` commits it.
 2. **Report** in German, in the "Reporting format for planner review" from CLAUDE.md, with this at the very top:
    - **Für dich am PC:** each open entry as ID, what to do in numbered steps, and what it unblocks. Say "nichts" if there is none.
