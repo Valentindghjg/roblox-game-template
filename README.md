@@ -54,12 +54,13 @@ rokit install
 ### 2. Name the game
 - In `CLAUDE.md`, replace `<GAME_NAME>` in the line `Game: **<GAME_NAME>**`.
 - In `default.project.json` and `release.project.json`, set `"name"`.
+- In `default.project.json`, give `"servePort"` a port no other game of yours uses (the template has 34873; for example 34874, 34875 …), so two games can run `rojo serve` at the same time.
 
 ### 3. Connect Studio
 ```powershell
 rojo serve default.project.json
 ```
-Open an empty place in Roblox Studio and press **Connect** in the Rojo plugin. Start Claude Code in the repository folder; it finds the Studio MCP through `.mcp.json`.
+Open an empty place in Roblox Studio, enter the game's `servePort` as the port in the Rojo plugin and press **Connect**. With two games open, each Studio window connects to its own port. Start Claude Code in the repository folder; it finds the Studio MCP through `.mcp.json`.
 
 ### 4. Plan the game with Claude
 Tell Claude something like: *"Let's plan the game: a cosy fishing village where you catch, sell and upgrade."*

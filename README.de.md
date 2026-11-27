@@ -9,7 +9,7 @@ Startgerüst für neue Roblox-Spiele, die Claude Code entwickelt: Regeln, Agents
    ```
    danach im Ordner `rokit install`.
 2. **Namen setzen:** `<GAME_NAME>` in `CLAUDE.md` und `"name"` in `default.project.json` und `release.project.json`.
-3. **Studio verbinden:** `rojo serve default.project.json` starten, in Studio im Rojo-Plugin auf **Connect** klicken, Claude Code im Ordner öffnen.
+3. **Studio verbinden:** `rojo serve default.project.json` starten, in Studio im Rojo-Plugin den `servePort` aus `default.project.json` als Port eintragen (jedes Spiel einen eigenen, das Template hat 34873) und auf **Connect** klicken, Claude Code im Ordner öffnen.
 4. **Planen:** „Lass uns das Spiel planen: …“. Der Skill `game-plan` (Opus) füllt mit dir Spec, Game Design und Backlog.
 5. **Arbeiten lassen:** „hasseln“ (oder `/hasseln`, „weiter“). Jede Aufgabe läuft durch planner → Implementer → playtester → reviewer, wird committet und gepusht.
 6. **Was nur du lösen kannst**, steht oben im Backlog unter „Für den Owner am PC“, mit deinen Schritten. Erledigen, „weiter“ sagen, und es geht genau dort weiter.
