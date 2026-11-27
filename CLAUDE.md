@@ -43,68 +43,20 @@ Read a document in full only when the task changes its subject as a whole (for e
 Do not mark unimplemented features complete. Prefer a playable vertical slice over broad unfinished scaffolding.
 
 ## Plan, implement, verify (model routing)
-Every task that changes code, tests, models or the map runs through the skill **`game-task`**. Each step runs in its own agent; the agent file in `.claude/agents/` fixes model and effort:
-
-| Step | Agent | Model, effort |
-|---|---|---|
-| Plan `docs/plans/<ID>.md` from `docs/plans/TEMPLATE.md` for tier M and MODEL; the plan settles every decision and sets the implementer tier | `planner` | Opus 5.5, medium |
-| Plan for tier L (saves, money, inventory, security, concurrency, bugs of unknown cause) | `planner-high` | Opus 5.5, high |
-| Tier S runs without a plan: the implementer works from the backlog entry and stops on anything it may not decide; then `planner` writes a plan | none | none |
-| Implement, tier S (patterns, UI, config, docs, tests) | `implementer` | Sonnet 5.5, medium |
-| Implement, tier M (multi-service features, non-trivial logic) | `implementer-high` | Sonnet 5.5, high |
-| Implement, tier L (saves, money, inventory, security, concurrency) | `implementer-opus` | Opus 5.5, high |
-| 3D models and map (tier MODEL), Blender kit, self-review against `docs/art/quality-reference/` | `modeler` | Opus 5.5, medium |
-| Playtest in Studio through the Roblox Studio MCP | `playtester` | Haiku 5.5 |
-| Review the diff against the plan, run the checks, record PROGRESS.md, commit and push | `reviewer` | Sonnet 5.5, high |
+Every task that changes code, tests, models or the map runs through the skill **`game-task`**; each step runs in its own agent, whose file in `.claude/agents/` fixes model and effort. The routing table (agent, model and effort per step; tier S runs without a plan) is in `.claude/skills/game-task/SKILL.md`, the tier rules under "Implementer tier" in `docs/plans/TEMPLATE.md`.
 
 - The main session only orchestrates. It does not write plans, code, models or commits itself.
 - Start the agents with `subagent_type` only. Never pass `model` or `effort` to the Agent tool, because that overrides the agent file.
 - Implementers decide only minor details themselves (names of locals and private helpers, formatting, lint fixes; rule 3 in `.claude/agents/implementer.md`) and stop with a report on any other ambiguity; the planner amends the plan.
 - Studio playtests are batched (owner decision 2026-11-26, speed and usage): now for saves, money, inventory, purchases, world wiring or a milestone's last task, else every fifth task via the queue "Studio-Test ausstehend" in `docs/CLAUDE_BACKLOG.md` (`game-task` step 3). A playtest is the smoke run plus the task's own steps; the full run only at the end of a hasseln run, for QA and release tasks and for runner or core-loop changes. Headless checks run for every task; agents print only failures and the summary.
-- Plans have a size budget (S 12 KB, M 20 KB, L 30 KB, MODEL 12 KB); the reviewer archives PROGRESS.md above 20 KB.
+- Plans have a size budget (S 6 KB, M 10 KB, L 16 KB, MODEL 8 KB); the reviewer archives PROGRESS.md above 20 KB.
 - **Model switch in the chat:** classify each message.
   - Planning (design, decisions, spec, backlog, priorities, balancing, "how should this work"): invoke `game-plan` (Opus 5.5, high).
   - Work (implement, fix, build models, playtest, carry out a plan): invoke `game-task` (Sonnet 5.5 orchestrating).
   - Working through the backlog ("durcharbeiten", "mach weiter", "weiter", "hustle"): invoke `hasseln`.
   - Short questions and conversation need no skill.
   - If a switch is not applied, the chat stays on its model and the skill raises the effort to high; `game-plan` stops and asks for Opus if the chat is on Sonnet.
-- **Hooks (`.claude/settings.json`, scripts in `.claude/hooks/`):**
-  - `route-prompt.js` (UserPromptSubmit) reminds the chat to classify every message.
-  - `guard-main-edits.js` (PreToolUse on Edit, Write, NotebookEdit) blocks the main chat from writing `src/`, `tests/`, `assets/` and `docs/plans/`; subagents are allowed. `GAME_ALLOW_MAIN_EDITS=1` switches it off.
+- **Hooks** (`.claude/hooks/`): `route-prompt.js` reminds the chat to classify each message; `guard-main-edits.js` blocks the main chat from writing `src/`, `tests/`, `assets/` and `docs/plans/` (subagents may; `GAME_ALLOW_MAIN_EDITS=1` turns it off).
 
 ## Skills
-Project skills under `.claude/skills/`:
-- **Workflow:** `game-plan`, `game-task`, `hasseln`, `blender-modeling` (Blender low-poly kit in `tools/art/kit/`).
-- **Roblox knowledge** from `TabooHarmony/roblox-brain` (MIT, pinned in `skills-lock.json`; licence in `.claude/skills/ROBLOX_BRAIN_LICENSE`):
-  - Core: roblox-collaboration-mode, roblox-architecture, roblox-data, roblox-server-data, roblox-luau-core, roblox-luau-patterns, roblox-luau-types, roblox-networking, roblox-performance, roblox-security
-  - Gameplay: roblox-animation-vfx, roblox-audio, roblox-building, roblox-camera, roblox-gui, roblox-input, roblox-lighting, roblox-localization, roblox-npc-ai, roblox-physics
-  - Design: roblox-analytics, roblox-game-design, roblox-growth-design, roblox-monetization, roblox-player-psychology
-  - Tools: roblox-cloud, roblox-publish-checklist, roblox-studio-mcp, roblox-tooling
-
-### Using the skills (mandatory)
-- The planner loads `roblox-collaboration-mode` first (with the precedence rules below), then each domain skill the change touches (`SKILL.md`; `references/full.md` only when needed), and copies the applicable checks into the plan's "Skill checks"; the other agents read those lines instead of the skills (the implementer of a tier S task without a plan reads the `SKILL.md` files itself). `CLAUDE.md` is in every agent's context already; agents do not read it again.
-
-  | Task | Skills |
-  |---|---|
-  | Save schema, migration or persisted fields | roblox-data, roblox-server-data |
-  | New or changed actions/remotes, money, inventory | roblox-networking, roblox-security |
-  | NPCs, vehicles, pathing | roblox-npc-ai, roblox-performance |
-  | World geometry and models | blender-modeling, roblox-building, roblox-lighting |
-  | UI | roblox-gui, roblox-input, roblox-localization |
-  | Luau code | roblox-luau-core, roblox-luau-patterns, roblox-luau-types |
-  | Module/service placement | roblox-architecture |
-  | Tooling, tests, CI | roblox-tooling |
-  | Economy and balance | roblox-game-design |
-  | Before any release | roblox-publish-checklist |
-- Apply each loaded skill's checks as acceptance criteria in addition to the ticket's.
-
-**This CLAUDE.md wins over the skills.** The same applies to the documents it names. Known conflicts and the rule that applies:
-1. **Working modes (roblox-collaboration-mode):** continuous execution above; carry approved milestones through without waiting for replies.
-2. **Approval gates:** only publication and paid products/actions need Product Owner approval; versioned schemas and migrations are engineering work.
-3. **Asking vs. deciding:** technical and minor gameplay decisions are made without asking; record them in DECISION_LOG.
-4. **Skill precedence:** this CLAUDE.md first, then the skills.
-5. **Asset sources (roblox-building, roblox-studio-mcp):** build original models (Blender kit or Parts); no unlicensed Toolbox assets and no AI mesh generators unless the owner allows them.
-6. **Source of truth:** Rojo plus this repository; a change that exists only in Studio is not part of the project.
-7. **Remote style (roblox-networking):** the versioned request/response action protocol `{ok, errorCode, revision, data}` (TECHNICAL_ARCHITECTURE section 3).
-8. **Code layout (roblox-architecture):** `src/shared`, `src/server/Services`, `src/client` (TECHNICAL_ARCHITECTURE section 1).
-Add game-specific conflicts (monetization, events, localization, offline income) here once the owner decides them.
+29 Roblox skills from `TabooHarmony/roblox-brain` in `.claude/skills/` (pins: `skills-lock.json`). They are not model-invocable (`skillOverrides` in `.claude/settings.json`, owner decision 2026-11-27, usage): the planner reads them by path, as `docs/SKILLS_POLICY.md` says (which skills per task, how their checks enter the plan's "Skill checks", and the known conflicts between skills and this project). This CLAUDE.md and the documents it names win over the skills. Rules for every agent: original models only, no unlicensed Toolbox assets, licence-clear sources with recorded provenance; Rojo plus this repository are the source of truth (a Studio-only change is not part of the project); player text only through string keys; remotes use the versioned action protocol `{ok, errorCode, revision, data}`.

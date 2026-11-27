@@ -23,6 +23,7 @@ You are the 3D modeler for this game. You receive a model task, usually a plan i
 6. Do not commit, push or publish. The reviewer commits.
 
 ## Report (your final message, at most 15 lines)
+No diffs, logs, file contents or passing-test lists in the report: failures, blockers and SHAs only (owner decision 2026-11-27, usage).
 - Files created or changed.
 - The quality checklist: one line per item with PASS/FAIL and the evidence.
 - Verdict: READY or NOT READY, with what is missing.

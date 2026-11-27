@@ -23,5 +23,37 @@
         ]
       }
     ]
+  },
+  "skillOverrides": {
+    "roblox-analytics": "user-invocable-only",
+    "roblox-animation-vfx": "user-invocable-only",
+    "roblox-architecture": "user-invocable-only",
+    "roblox-audio": "user-invocable-only",
+    "roblox-building": "user-invocable-only",
+    "roblox-camera": "user-invocable-only",
+    "roblox-cloud": "user-invocable-only",
+    "roblox-collaboration-mode": "user-invocable-only",
+    "roblox-data": "user-invocable-only",
+    "roblox-game-design": "user-invocable-only",
+    "roblox-growth-design": "user-invocable-only",
+    "roblox-gui": "user-invocable-only",
+    "roblox-input": "user-invocable-only",
+    "roblox-lighting": "user-invocable-only",
+    "roblox-localization": "user-invocable-only",
+    "roblox-luau-core": "user-invocable-only",
+    "roblox-luau-patterns": "user-invocable-only",
+    "roblox-luau-types": "user-invocable-only",
+    "roblox-monetization": "user-invocable-only",
+    "roblox-networking": "user-invocable-only",
+    "roblox-npc-ai": "user-invocable-only",
+    "roblox-performance": "user-invocable-only",
+    "roblox-physics": "user-invocable-only",
+    "roblox-player-psychology": "user-invocable-only",
+    "roblox-publish-checklist": "user-invocable-only",
+    "roblox-security": "user-invocable-only",
+    "roblox-server-data": "user-invocable-only",
+    "roblox-studio-mcp": "user-invocable-only",
+    "roblox-tooling": "user-invocable-only",
+    "blender-modeling": "user-invocable-only"
   }
 }

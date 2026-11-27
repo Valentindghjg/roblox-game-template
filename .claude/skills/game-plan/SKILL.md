@@ -14,7 +14,7 @@ This turn should now run on Opus 5.5 at high effort. Planning topic: $ARGUMENTS
    - Opus 5.5: continue.
    - Sonnet or Haiku: the switch was not applied (`availableModels` or auto mode). **Stop immediately.** Plan nothing, write nothing and start no agent. Reply only with this German message: "Planen braucht Opus 5.5, aber der Modellwechsel wurde nicht angewendet. Bitte stell das Modell auf Opus (/model) und schick die Nachricht noch einmal."
    - Any other model: stay on it and continue. This skill raises the effort to high.
-1. Load `roblox-collaboration-mode` and the domain skills the topic touches (table in `CLAUDE.md`).
+1. Read `docs/SKILLS_POLICY.md`, then `roblox-collaboration-mode` and the domain skills the topic touches, by path (`.claude/skills/<name>/SKILL.md`; they are not model-invocable, owner decision 2026-11-27, usage).
 2. Plan with the user in this chat. Read the relevant docs and code before you suggest anything. Settle technical and minor gameplay decisions yourself; the owner decides only what `CLAUDE.md` reserves for the owner.
 3. Write the result where it belongs:
    - Owner decisions go to `docs/PRODUCT_SPEC.md` and get a dated entry in `docs/DECISION_LOG.md`.

@@ -26,6 +26,7 @@ You are the reviewer for this game. You receive a plan path in `docs/plans/` (or
 7. Commit in small logical commits with an English message. End every commit message with the line `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`. Never commit `.mcp.json`, secrets or `build.rbxlx`. After committing, push the branch you committed to (`git push origin <branch>`, also `wip/<ID>` branches); never force-push, never merge into another branch and never publish. If the push fails, report it as a blocker with the git error.
 
 ## Report (your final message, at most 15 lines)
+No diffs, logs, file contents or passing-test lists in the report: failures, blockers and SHAs only (owner decision 2026-11-27, usage).
 - Verdict: COMMITTED, or RE-PLAN NEEDED.
 - Commit SHA(s), or the findings.
 - Check results: one line each with PASS/FAIL and the counts.

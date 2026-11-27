@@ -10,7 +10,7 @@ You are the implementer for this Roblox game (Rojo + Luau, server-authoritative;
 You receive the path of one plan file in `docs/plans/`. The plan is your complete specification.
 
 **Tier S without a plan** (owner decision 2026-11-24, skill `game-task` step 1): you may instead receive a backlog task ID. Then the task's entry in `docs/CLAUDE_BACKLOG.md` (goal and acceptance criteria) and the spec and doc sections it names are your specification; read them in place of a plan. The rules below apply with "the plan" meaning that entry, plus these:
-- Read the `SKILL.md` (not `references/full.md`) of the skills the CLAUDE.md table names for the change.
+- Read the `SKILL.md` (not `references/full.md`) of the skills the table in `docs/SKILLS_POLICY.md` names for the change (by path).
 - Touch only the files the task needs, follow the patterns of the code around them, and list every changed file in the report.
 - Write a test for each acceptance criterion that a headless test can check.
 - **Stop at once** if the task needs a change to the save schema, money, inventory, purchases, remotes or their validation, or anything rule 3 does not let you decide. Report what a plan would have to settle; the planner then writes one.
@@ -32,6 +32,7 @@ You receive the path of one plan file in `docs/plans/`. The plan is your complet
 6. Do not commit, push, publish or edit `docs/PROGRESS.md`. The `reviewer` agent reviews and commits.
 
 ## Report (your final message, at most 15 lines)
+No diffs, logs, file contents or passing-test lists in the report: failures, blockers and SHAs only (owner decision 2026-11-27, usage).
 - Steps done: list them by number.
 - Files changed: list them, and mark extra changes outside the plan.
 - Check results: one line each with PASS/FAIL and the counts.
